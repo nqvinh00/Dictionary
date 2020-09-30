@@ -32,10 +32,10 @@ public class DictionaryManagement {
 
     public void insertFromFile() {
         try {
-            File file = new File("/home/vinh/Documents/Dictionary/docs/dictionaries.txt");
+            File file = new File("docs/dictionaries.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
-                String[] word_with_meaning = scanner.nextLine().split("\t");
+                String[] word_with_meaning = scanner.nextLine().split("\t", 2);
                 dictionary.addWord(word_with_meaning[0], word_with_meaning[1]);
             }
         } catch (FileNotFoundException e) {

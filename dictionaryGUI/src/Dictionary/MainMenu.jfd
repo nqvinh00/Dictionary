@@ -1,0 +1,212 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {comp panel11:::p::p, space :0:0:p, par l {comp panel33:::::x, comp panel12:::::x}}}"
+			"$verticalGroup": "par t {seq {comp panel12:::::p, space :0:0:p, comp panel33:::::x}, comp panel11::t:::x}"
+		} ) {
+			name: "frame1"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space :p:60:p, par t {seq l {comp p1:::p::p, space :0:20:x}, comp p2::l:::x, comp p3::l:::x, comp p4::l:::x, comp p5::l:::x}, space :p:25:p}}"
+				"$verticalGroup": "par l {seq l {space :p:119:p, comp p1:::p::p, space :p:47:p, comp p2:::p::p, space :p:54:p, comp p3:::p::p, space :p:42:p, comp p4:::p::p, space :p:42:p, comp p5:::p::p, space :::x}}"
+			} ) {
+				name: "panel11"
+				"background": new java.awt.Color( 69, 73, 74, 255 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:26:p, comp home:::::x, space ::55:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp home:::::x, space :::x}}"
+				} ) {
+					name: "p1"
+					"background": new java.awt.Color( 69, 73, 74, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "home"
+						"text": "Trang chủ"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Dictionary/icons8-squared-menu-50.png" )
+						"font": new java.awt.Font( "Inconsolata", 1, 24 )
+						"foreground": new java.awt.Color( 187, 211, 248, 255 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:28:p, comp wordTrans:::p::p, space :::x}}"
+					"$verticalGroup": "par l {seq t {space :::x, comp wordTrans:::p::p, space :::p}}"
+				} ) {
+					name: "p2"
+					"background": new java.awt.Color( 69, 73, 74, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "wordTrans"
+						"text": "Dịch từ"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Dictionary/icons8-search-50.png" )
+						"font": new java.awt.Font( "Inconsolata", 1, 24 )
+						"foreground": new java.awt.Color( 187, 211, 248, 255 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:27:p, comp paraTrans:::p::p, space :::x}}"
+					"$verticalGroup": "par l {seq l {comp paraTrans:::p:58:p, space :0:12:x}}"
+				} ) {
+					name: "p3"
+					"background": new java.awt.Color( 69, 73, 74, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "paraTrans"
+						"text": "Dịch đoạn"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Dictionary/icons8-window-search-50.png" )
+						"font": new java.awt.Font( "Inconsolata", 1, 24 )
+						"foreground": new java.awt.Color( 187, 211, 248, 255 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:28:p, comp modify:::p::p, space :::x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp modify:::p::p, space :::x}}"
+				} ) {
+					name: "p4"
+					"background": new java.awt.Color( 69, 73, 74, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "modify"
+						"text": "Chỉnh sửa từ"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Dictionary/icons8-services-50.png" )
+						"font": new java.awt.Font( "Inconsolata", 1, 24 )
+						"foreground": new java.awt.Color( 187, 211, 248, 255 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:29:p, comp about:::p::p, space :::x}}"
+					"$verticalGroup": "par l {seq t {space :::x, comp about:::p::p, space :::p}}"
+				} ) {
+					name: "p5"
+					"background": new java.awt.Color( 69, 73, 74, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "about"
+						"text": "Thông tin"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Dictionary/icons8-about-50.png" )
+						"font": new java.awt.Font( "Inconsolata", 1, 24 )
+						"foreground": new java.awt.Color( 187, 211, 248, 255 )
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:0:x}"
+				"$verticalGroup": "par l {space :0:130:x}"
+			} ) {
+				name: "panel12"
+				"background": new java.awt.Color( 69, 73, 74, 255 )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+				name: "panel33"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:850:x}"
+					"$verticalGroup": "par l {space :0:636:x}"
+				} ) {
+					name: "aboutPane"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card5"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq t {space :::p, comp panel2:::::x, space :::p}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp panel2:::::x, space :::p}}"
+				} ) {
+					name: "modifyPane"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {space :p:96:p, par l {comp panel3:::::x, seq {space :0:0:x, comp textField2:::p:245:p}}, space ::497:x}}"
+						"$verticalGroup": "par l {seq l {space :p:70:p, comp panel3:::p::p, space :::p, comp textField2:::p:45:p, space ::428:x}}"
+					} ) {
+						name: "panel2"
+						"background": new java.awt.Color( 69, 73, 74, 255 )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField2"
+							"font": new java.awt.Font( "Inconsolata", 0, 20 )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {space :::p, comp label1:::::x, space :::p}}"
+							"$verticalGroup": "par l {seq t {space :0:37:x, comp label1:::p:38:p}}"
+						} ) {
+							name: "panel3"
+							"background": new java.awt.Color( 69, 73, 74, 255 )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label1"
+								"text": "Nhập từ"
+								"font": new java.awt.Font( "Inconsolata", 0, 20 )
+							} )
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card4"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:850:x}"
+					"$verticalGroup": "par l {space :0:636:x}"
+				} ) {
+					name: "paraTransPane"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card3"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:850:x}"
+					"$verticalGroup": "par l {space :0:636:x}"
+				} ) {
+					name: "homePane"
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card1"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {space :p:11:p, comp panel34:::p::p, space :::p, comp panel1:::::x, space :::p}}"
+					"$verticalGroup": "par l {seq t {space ::12:x, par t:::p {comp panel1:::::x, comp panel34:::::x}, space :::p}}"
+				} ) {
+					name: "wordTransPane"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {space :::p, par l {comp scrollPane1::::213:x, comp textField1::::213:x}, space :::p}}"
+						"$verticalGroup": "par l {seq l {space :p:12:p, comp textField1:::p:47:p, space u:::p, comp scrollPane1::::541:x, space :::p}}"
+					} ) {
+						name: "panel34"
+						"background": new java.awt.Color( 69, 73, 74, 255 )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField1"
+							"font": new java.awt.Font( "Inconsolata", 0, 20 )
+							"foreground": new java.awt.Color( 204, 204, 204, 255 )
+							"caretColor": new java.awt.Color( 153, 153, 153, 255 )
+							"background": new java.awt.Color( 69, 74, 74, 255 )
+							"cursor": new java.awt.Cursor( 2 )
+							"horizontalAlignment": 2
+							auxiliary() {
+								"JavaCodeGenerator.postInitCode": "textField1.setMaximumSize(textField1.getPreferredSize());\ntextField1.setMinimumSize(textField1.getPreferredSize());"
+							}
+						} )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane1"
+							auxiliary() {
+								"JavaCodeGenerator.postInitCode": "list1.setFont(new Font(\"Inconsolata\", Font.PLAIN, 20));\nlist1.setForeground(new Color(204, 204, 204));\nlist1.setBackground(new Color(69, 74, 74));\nlist1.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));\nlist1.setMaximumSize(list1.getPreferredSize());\nlist1.setMinimumSize(list1.getPreferredSize());"
+							}
+							add( new FormComponent( "javax.swing.JList" ) {
+								name: "list1"
+								"foreground": new java.awt.Color( 204, 204, 204, 255 )
+								"font": new java.awt.Font( "Inconsolata", 0, 20 )
+							} )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane2::::590:x, space :::p}}"
+						"$verticalGroup": "par l {seq t {space :::p, comp scrollPane2::::606:x, space :::p}}"
+					} ) {
+						name: "panel1"
+						"background": new java.awt.Color( 69, 73, 74, 255 )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane2"
+							add( new FormComponent( "javax.swing.JTextArea" ) {
+								name: "textArea1"
+								"foreground": new java.awt.Color( 204, 204, 204, 255 )
+								"font": new java.awt.Font( "Inconsolata", 0, 20 )
+								"editable": false
+							} )
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card2"
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 105, 0 )
+			"size": new java.awt.Dimension( 1200, 795 )
+		} )
+	}
+}
