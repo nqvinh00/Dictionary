@@ -8,20 +8,21 @@ import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
-import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.*;
+
 
 /**
  * @author Nguyen Vinh
  */
 public class MainMenu extends JFrame {
     private void initComponents() {
+        dm = new DictionaryManagement();
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Nguyen Vinh
         frame1 = new JFrame();
@@ -37,15 +38,25 @@ public class MainMenu extends JFrame {
         p5 = new JPanel();
         about = new JLabel();
         panel12 = new JPanel();
+        panel6 = new JPanel();
+        label5 = new JLabel();
         panel33 = new JPanel();
         aboutPane = new JPanel();
+        textArea4 = new JTextArea();
         modifyPane = new JPanel();
         panel2 = new JPanel();
+        label1 = new JLabel();
         textField2 = new JTextField();
         panel3 = new JPanel();
-        label1 = new JLabel();
-        paraTransPane = new JPanel();
+        label2 = new JLabel();
+        panel4 = new JPanel();
+        label3 = new JLabel();
+        panel5 = new JPanel();
+        label4 = new JLabel();
         homePane = new JPanel();
+        panel9 = new JPanel();
+        label10 = new JLabel();
+        label8 = new JLabel();
         wordTransPane = new JPanel();
         panel34 = new JPanel();
         textField1 = new JTextField();
@@ -54,6 +65,15 @@ public class MainMenu extends JFrame {
         panel1 = new JPanel();
         scrollPane2 = new JScrollPane();
         textArea1 = new JTextArea();
+        paraTransPane = new JPanel();
+        panel7 = new JPanel();
+        scrollPane3 = new JScrollPane();
+        textArea2 = new JTextArea();
+        scrollPane4 = new JScrollPane();
+        textArea3 = new JTextArea();
+        label6 = new JLabel();
+        panel8 = new JPanel();
+        label7 = new JLabel();
 
         //======== frame1 ========
         {
@@ -62,12 +82,12 @@ public class MainMenu extends JFrame {
             //======== panel11 ========
             {
                 panel11.setBackground(new Color(69, 73, 74));
-                panel11.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-                EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-                . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
-                java . awt. Color .red ) ,panel11. getBorder () ) ); panel11. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-                { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
-                throw new RuntimeException( ) ;} } );
+                panel11.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+                border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
+                , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+                .BOLD ,12 ), java. awt. Color. red) ,panel11. getBorder( )) ); panel11. addPropertyChangeListener (
+                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
+                .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //======== p1 ========
                 {
@@ -244,17 +264,50 @@ public class MainMenu extends JFrame {
             //======== panel12 ========
             {
                 panel12.setBackground(new Color(69, 73, 74));
+                panel12.setLayout(null);
 
-                GroupLayout panel12Layout = new GroupLayout(panel12);
-                panel12.setLayout(panel12Layout);
-                panel12Layout.setHorizontalGroup(
-                    panel12Layout.createParallelGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                );
-                panel12Layout.setVerticalGroup(
-                    panel12Layout.createParallelGroup()
-                        .addGap(0, 130, Short.MAX_VALUE)
-                );
+                //======== panel6 ========
+                {
+                    panel6.setBackground(new Color(69, 73, 74));
+
+                    //---- label5 ----
+                    label5.setIcon(new ImageIcon(getClass().getResource("/Dictionary/icons8-speaker-50.png")));
+                    label5.setBackground(new Color(69, 73, 74));
+
+                    GroupLayout panel6Layout = new GroupLayout(panel6);
+                    panel6.setLayout(panel6Layout);
+                    panel6Layout.setHorizontalGroup(
+                        panel6Layout.createParallelGroup()
+                            .addGroup(GroupLayout.Alignment.TRAILING, panel6Layout.createSequentialGroup()
+                                .addContainerGap(8, Short.MAX_VALUE)
+                                .addComponent(label5)
+                                .addContainerGap())
+                    );
+                    panel6Layout.setVerticalGroup(
+                        panel6Layout.createParallelGroup()
+                            .addGroup(GroupLayout.Alignment.TRAILING, panel6Layout.createSequentialGroup()
+                                .addContainerGap(8, Short.MAX_VALUE)
+                                .addComponent(label5)
+                                .addContainerGap())
+                    );
+                }
+                panel12.add(panel6);
+                panel6.setBounds(775, 65, 64, 64);
+
+                {
+                    // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel12.getComponentCount(); i++) {
+                        Rectangle bounds = panel12.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel12.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel12.setMinimumSize(preferredSize);
+                    panel12.setPreferredSize(preferredSize);
+                }
             }
 
             //======== panel33 ========
@@ -264,15 +317,27 @@ public class MainMenu extends JFrame {
                 //======== aboutPane ========
                 {
 
+                    //---- textArea4 ----
+                    textArea4.setBackground(new Color(69, 73, 74));
+                    textArea4.setEditable(false);
+                    textArea4.setLineWrap(true);
+                    textArea4.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 20));
+
                     GroupLayout aboutPaneLayout = new GroupLayout(aboutPane);
                     aboutPane.setLayout(aboutPaneLayout);
                     aboutPaneLayout.setHorizontalGroup(
                         aboutPaneLayout.createParallelGroup()
-                            .addGap(0, 850, Short.MAX_VALUE)
+                            .addGroup(aboutPaneLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(textArea4)
+                                .addContainerGap())
                     );
                     aboutPaneLayout.setVerticalGroup(
                         aboutPaneLayout.createParallelGroup()
-                            .addGap(0, 636, Short.MAX_VALUE)
+                            .addGroup(aboutPaneLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(textArea4, GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                                .addContainerGap())
                     );
                 }
                 panel33.add(aboutPane, "card5");
@@ -284,31 +349,95 @@ public class MainMenu extends JFrame {
                     {
                         panel2.setBackground(new Color(69, 73, 74));
 
+                        //---- label1 ----
+                        label1.setText("Nh\u1eadp t\u1eeb");
+                        label1.setFont(new Font("Inconsolata", Font.PLAIN, 20));
+                        label1.setBackground(new Color(69, 73, 74));
+
                         //---- textField2 ----
                         textField2.setFont(new Font("Inconsolata", Font.PLAIN, 20));
+                        textField2.setBackground(new Color(69, 73, 73));
 
                         //======== panel3 ========
                         {
                             panel3.setBackground(new Color(69, 73, 74));
 
-                            //---- label1 ----
-                            label1.setText("Nh\u1eadp t\u1eeb");
-                            label1.setFont(new Font("Inconsolata", Font.PLAIN, 20));
+                            //---- label2 ----
+                            label2.setIcon(new ImageIcon(getClass().getResource("/Dictionary/icons8-add-property-50.png")));
+                            label2.setBackground(new Color(69, 73, 74));
+                            label2.setToolTipText("Th\u00eam t\u1eeb");
 
                             GroupLayout panel3Layout = new GroupLayout(panel3);
                             panel3.setLayout(panel3Layout);
                             panel3Layout.setHorizontalGroup(
                                 panel3Layout.createParallelGroup()
                                     .addGroup(GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addContainerGap())
+                                        .addContainerGap(18, Short.MAX_VALUE)
+                                        .addComponent(label2)
+                                        .addGap(16, 16, 16))
                             );
                             panel3Layout.setVerticalGroup(
                                 panel3Layout.createParallelGroup()
-                                    .addGroup(GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
-                                        .addGap(0, 37, Short.MAX_VALUE)
-                                        .addComponent(label1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel3Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(label2)
+                                        .addContainerGap(19, Short.MAX_VALUE))
+                            );
+                        }
+
+                        //======== panel4 ========
+                        {
+                            panel4.setBackground(new Color(69, 73, 74));
+                            panel4.setToolTipText("X\u00f3a t\u1eeb");
+
+                            //---- label3 ----
+                            label3.setIcon(new ImageIcon(getClass().getResource("/Dictionary/icons8-remove-property-50.png")));
+                            label3.setBackground(new Color(69, 73, 74));
+                            label3.setToolTipText("X\u00f3a t\u1eeb");
+
+                            GroupLayout panel4Layout = new GroupLayout(panel4);
+                            panel4.setLayout(panel4Layout);
+                            panel4Layout.setHorizontalGroup(
+                                panel4Layout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
+                                        .addContainerGap(18, Short.MAX_VALUE)
+                                        .addComponent(label3)
+                                        .addGap(16, 16, 16))
+                            );
+                            panel4Layout.setVerticalGroup(
+                                panel4Layout.createParallelGroup()
+                                    .addGroup(panel4Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(label3)
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            );
+                        }
+
+                        //======== panel5 ========
+                        {
+                            panel5.setBackground(new Color(69, 73, 74));
+                            panel5.setToolTipText("Ch\u1ec9nh s\u1eeda");
+
+                            //---- label4 ----
+                            label4.setBackground(new Color(69, 73, 74));
+                            label4.setIcon(new ImageIcon(getClass().getResource("/Dictionary/icons8-edit-property-50.png")));
+                            label4.setToolTipText("Ch\u1ec9nh s\u1eeda");
+
+                            GroupLayout panel5Layout = new GroupLayout(panel5);
+                            panel5.setLayout(panel5Layout);
+                            panel5Layout.setHorizontalGroup(
+                                panel5Layout.createParallelGroup()
+                                    .addGroup(panel5Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(label4)
+                                        .addContainerGap(20, Short.MAX_VALUE))
+                            );
+                            panel5Layout.setVerticalGroup(
+                                panel5Layout.createParallelGroup()
+                                    .addGroup(panel5Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(label4)
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             );
                         }
 
@@ -317,22 +446,35 @@ public class MainMenu extends JFrame {
                         panel2Layout.setHorizontalGroup(
                             panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(96, 96, 96)
                                     .addGroup(panel2Layout.createParallelGroup()
-                                        .addComponent(panel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(0, 0, Short.MAX_VALUE)
-                                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE)))
-                                    .addContainerGap(497, Short.MAX_VALUE))
+                                            .addGap(105, 105, 105)
+                                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(91, 91, 91)
+                                            .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(panel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(panel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(105, 105, 105)
+                                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)))
+                                    .addContainerGap(498, Short.MAX_VALUE))
                         );
                         panel2Layout.setVerticalGroup(
                             panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(70, 70, 70)
-                                    .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(143, 143, 143)
+                                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(428, Short.MAX_VALUE))
+                                    .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(36, 36, 36)
+                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(panel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(panel4, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(panel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addContainerGap(275, Short.MAX_VALUE))
                         );
                     }
 
@@ -355,34 +497,62 @@ public class MainMenu extends JFrame {
                 }
                 panel33.add(modifyPane, "card4");
 
-                //======== paraTransPane ========
-                {
-
-                    GroupLayout paraTransPaneLayout = new GroupLayout(paraTransPane);
-                    paraTransPane.setLayout(paraTransPaneLayout);
-                    paraTransPaneLayout.setHorizontalGroup(
-                        paraTransPaneLayout.createParallelGroup()
-                            .addGap(0, 850, Short.MAX_VALUE)
-                    );
-                    paraTransPaneLayout.setVerticalGroup(
-                        paraTransPaneLayout.createParallelGroup()
-                            .addGap(0, 636, Short.MAX_VALUE)
-                    );
-                }
-                panel33.add(paraTransPane, "card3");
-
                 //======== homePane ========
                 {
+
+                    //======== panel9 ========
+                    {
+                        panel9.setBackground(new Color(69, 73, 74));
+
+                        //---- label10 ----
+                        label10.setText("text");
+                        label10.setIcon(new ImageIcon(getClass().getResource("/Dictionary/download.png")));
+
+                        //---- label8 ----
+                        label8.setText("T\u1eeb \u0111i\u1ec3n Anh - Vi\u1ec7t");
+                        label8.setForeground(new Color(187, 211, 248));
+                        label8.setFont(new Font("Inconsolata", Font.BOLD, 36));
+                        label8.setHorizontalAlignment(SwingConstants.CENTER);
+
+                        GroupLayout panel9Layout = new GroupLayout(panel9);
+                        panel9.setLayout(panel9Layout);
+                        panel9Layout.setHorizontalGroup(
+                            panel9Layout.createParallelGroup()
+                                .addGroup(panel9Layout.createSequentialGroup()
+                                    .addContainerGap(26, Short.MAX_VALUE)
+                                    .addComponent(label10, GroupLayout.PREFERRED_SIZE, 811, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(16, 16, 16))
+                                .addGroup(panel9Layout.createSequentialGroup()
+                                    .addGap(96, 96, 96)
+                                    .addComponent(label8, GroupLayout.PREFERRED_SIZE, 654, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(103, Short.MAX_VALUE))
+                        );
+                        panel9Layout.setVerticalGroup(
+                            panel9Layout.createParallelGroup()
+                                .addGroup(panel9Layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(label10, GroupLayout.PREFERRED_SIZE, 502, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(label8, GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18))
+                        );
+                    }
 
                     GroupLayout homePaneLayout = new GroupLayout(homePane);
                     homePane.setLayout(homePaneLayout);
                     homePaneLayout.setHorizontalGroup(
                         homePaneLayout.createParallelGroup()
-                            .addGap(0, 850, Short.MAX_VALUE)
+                            .addGroup(homePaneLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panel9, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                     );
                     homePaneLayout.setVerticalGroup(
                         homePaneLayout.createParallelGroup()
-                            .addGap(0, 636, Short.MAX_VALUE)
+                            .addGroup(homePaneLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panel9, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                     );
                 }
                 panel33.add(homePane, "card1");
@@ -436,7 +606,7 @@ public class MainMenu extends JFrame {
                                     .addGap(12, 12, 12)
                                     .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                                    .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                                     .addContainerGap())
                         );
                     }
@@ -461,14 +631,14 @@ public class MainMenu extends JFrame {
                             panel1Layout.createParallelGroup()
                                 .addGroup(panel1Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                                    .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                                     .addContainerGap())
                         );
                         panel1Layout.setVerticalGroup(
                             panel1Layout.createParallelGroup()
                                 .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                                    .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
                                     .addContainerGap())
                         );
                     }
@@ -478,7 +648,7 @@ public class MainMenu extends JFrame {
                     wordTransPaneLayout.setHorizontalGroup(
                         wordTransPaneLayout.createParallelGroup()
                             .addGroup(wordTransPaneLayout.createSequentialGroup()
-                                .addGap(11, 11, 11)
+                                .addContainerGap()
                                 .addComponent(panel34, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -487,14 +657,125 @@ public class MainMenu extends JFrame {
                     wordTransPaneLayout.setVerticalGroup(
                         wordTransPaneLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, wordTransPaneLayout.createSequentialGroup()
-                                .addContainerGap(12, Short.MAX_VALUE)
-                                .addGroup(wordTransPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                .addContainerGap()
+                                .addGroup(wordTransPaneLayout.createParallelGroup()
                                     .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panel34, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
                     );
                 }
                 panel33.add(wordTransPane, "card2");
+
+                //======== paraTransPane ========
+                {
+
+                    //======== panel7 ========
+                    {
+                        panel7.setBackground(new Color(69, 73, 74));
+
+                        //======== scrollPane3 ========
+                        {
+
+                            //---- textArea2 ----
+                            textArea2.setForeground(new Color(204, 204, 204));
+                            textArea2.setFont(new Font("Inconsolata", Font.PLAIN, 20));
+                            textArea2.setBackground(new Color(69, 74, 74));
+                            scrollPane3.setViewportView(textArea2);
+                        }
+
+                        //======== scrollPane4 ========
+                        {
+
+                            //---- textArea3 ----
+                            textArea3.setForeground(new Color(204, 204, 204));
+                            textArea3.setFont(new Font("Inconsolata", Font.PLAIN, 20));
+                            textArea3.setBackground(new Color(69, 73, 74));
+                            textArea3.setEditable(false);
+                            scrollPane4.setViewportView(textArea3);
+                        }
+
+                        //---- label6 ----
+                        label6.setText("Nh\u1eadp \u0111o\u1ea1n v\u0103n b\u1ea3n c\u1ea7n d\u1ecbch (s\u1eed d\u1ee5ng API)");
+                        label6.setForeground(new Color(204, 204, 204));
+                        label6.setFont(new Font("Inconsolata", Font.PLAIN, 20));
+
+                        //======== panel8 ========
+                        {
+                            panel8.setBackground(new Color(69, 73, 74));
+
+                            //---- label7 ----
+                            label7.setIcon(new ImageIcon(getClass().getResource("/Dictionary/icons8-window-search-50.png")));
+                            label7.setHorizontalAlignment(SwingConstants.CENTER);
+
+                            GroupLayout panel8Layout = new GroupLayout(panel8);
+                            panel8.setLayout(panel8Layout);
+                            panel8Layout.setHorizontalGroup(
+                                panel8Layout.createParallelGroup()
+                                    .addGroup(panel8Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            );
+                            panel8Layout.setVerticalGroup(
+                                panel8Layout.createParallelGroup()
+                                    .addGroup(panel8Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            );
+                        }
+
+                        GroupLayout panel7Layout = new GroupLayout(panel7);
+                        panel7.setLayout(panel7Layout);
+                        panel7Layout.setHorizontalGroup(
+                            panel7Layout.createParallelGroup()
+                                .addGroup(panel7Layout.createSequentialGroup()
+                                    .addGap(36, 36, 36)
+                                    .addGroup(panel7Layout.createParallelGroup()
+                                        .addComponent(label6, GroupLayout.PREFERRED_SIZE, 501, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(panel7Layout.createSequentialGroup()
+                                            .addGroup(panel7Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(scrollPane4, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                                                .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
+                                            .addGap(41, 41, 41)
+                                            .addComponent(panel8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGap(57, 57, 57))
+                        );
+                        panel7Layout.setVerticalGroup(
+                            panel7Layout.createParallelGroup()
+                                .addGroup(panel7Layout.createSequentialGroup()
+                                    .addGap(48, 48, 48)
+                                    .addComponent(label6, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panel7Layout.createParallelGroup()
+                                        .addComponent(scrollPane3, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(GroupLayout.Alignment.TRAILING, panel7Layout.createSequentialGroup()
+                                            .addComponent(panel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(17, 17, 17)))
+                                    .addGap(62, 62, 62)
+                                    .addComponent(scrollPane4, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(182, Short.MAX_VALUE))
+                        );
+                    }
+
+                    GroupLayout paraTransPaneLayout = new GroupLayout(paraTransPane);
+                    paraTransPane.setLayout(paraTransPaneLayout);
+                    paraTransPaneLayout.setHorizontalGroup(
+                        paraTransPaneLayout.createParallelGroup()
+                            .addGroup(paraTransPaneLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panel7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                    );
+                    paraTransPaneLayout.setVerticalGroup(
+                        paraTransPaneLayout.createParallelGroup()
+                            .addGroup(paraTransPaneLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panel7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                    );
+                }
+                panel33.add(paraTransPane, "card6");
             }
 
             GroupLayout frame1ContentPaneLayout = new GroupLayout(frame1ContentPane);
@@ -505,13 +786,13 @@ public class MainMenu extends JFrame {
                         .addComponent(panel11, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addGroup(frame1ContentPaneLayout.createParallelGroup()
-                            .addComponent(panel33, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panel33, GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                             .addComponent(panel12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
             frame1ContentPaneLayout.setVerticalGroup(
                 frame1ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addGroup(frame1ContentPaneLayout.createSequentialGroup()
-                        .addComponent(panel12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panel12, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(panel33, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panel11, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -533,17 +814,14 @@ public class MainMenu extends JFrame {
                 paraTransPane.setVisible(false);
                 modifyPane.setVisible(false);
                 aboutPane.setVisible(false);
+                panel6.setVisible(false);
             }
 
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
+            public void mousePressed(MouseEvent mouseEvent) {}
 
             @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-
-            }
+            public void mouseReleased(MouseEvent mouseEvent) {}
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -552,7 +830,7 @@ public class MainMenu extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-                p1.setBackground(new Color(69, 73, 74));
+                p1.setBackground(background1);
 
             }
         });
@@ -565,17 +843,14 @@ public class MainMenu extends JFrame {
                 paraTransPane.setVisible(false);
                 modifyPane.setVisible(false);
                 aboutPane.setVisible(false);
+                panel6.setVisible(true);
             }
 
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
+            public void mousePressed(MouseEvent mouseEvent) {}
 
             @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-
-            }
+            public void mouseReleased(MouseEvent mouseEvent) {}
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -584,7 +859,7 @@ public class MainMenu extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-                p2.setBackground(new Color(69, 73, 74));
+                p2.setBackground(background1);
 
             }
         });
@@ -597,17 +872,14 @@ public class MainMenu extends JFrame {
                 paraTransPane.setVisible(true);
                 modifyPane.setVisible(false);
                 aboutPane.setVisible(false);
+                panel6.setVisible(true);
             }
 
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
+            public void mousePressed(MouseEvent mouseEvent) {}
 
             @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-
-            }
+            public void mouseReleased(MouseEvent mouseEvent) {}
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -616,7 +888,7 @@ public class MainMenu extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-                p3.setBackground(new Color(69, 73, 74));
+                p3.setBackground(background1);
 
             }
         });
@@ -629,17 +901,14 @@ public class MainMenu extends JFrame {
                 paraTransPane.setVisible(false);
                 modifyPane.setVisible(true);
                 aboutPane.setVisible(false);
+                panel6.setVisible(false);
             }
 
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
+            public void mousePressed(MouseEvent mouseEvent) {}
 
             @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-
-            }
+            public void mouseReleased(MouseEvent mouseEvent) {}
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -648,7 +917,7 @@ public class MainMenu extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-                p4.setBackground(new Color(69, 73, 74));
+                p4.setBackground(background1);
 
             }
         });
@@ -661,17 +930,16 @@ public class MainMenu extends JFrame {
                 paraTransPane.setVisible(false);
                 modifyPane.setVisible(false);
                 aboutPane.setVisible(true);
+                panel6.setVisible(false);
+                textArea4.setText("\n  Tác giả: Nguyễn Quang Vinh \n  Lớp: K63K1\n  MSSV: 18024129\n  Phần mềm có sử dụng:" +
+                        "\n\t   - Java\n\t   - Swing\n\t   - JFormDesigner 7\n\t   - Microsoft Translator API");
             }
 
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-
-            }
+            public void mousePressed(MouseEvent mouseEvent) {}
 
             @Override
-            public void mouseReleased(MouseEvent mouseEvent) {
-
-            }
+            public void mouseReleased(MouseEvent mouseEvent) {}
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -680,67 +948,133 @@ public class MainMenu extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-                p5.setBackground(new Color(69, 73, 74));
+                p5.setBackground(background1);
 
             }
         });
-        textField1.setBorder(new LineBorder(new Color(5, 5, 5)));
-        scrollPane1.setBorder(new LineBorder(new Color(5, 5, 5)));
-        textArea1.setBackground(new Color(69, 73, 74));
-    }
 
-    private void defaultPage() {
-        DefaultListModel word = new DefaultListModel();
-        words = dm.dictionarySearcher("");
-        for (int i = 0; i < words.size(); i++) {
-            word.addElement(words.get(i).getWord());
-        }
-        list1.setModel(word);
-    }
+        label2.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                String word = textField2.getText();
+                JOptionPane meaning = new JOptionPane();
+                meaning.setBackground(background1);
+                String input = meaning.showInputDialog(null, "Nhập nghĩa của từ:", "Thêm từ", 1);
+                if (input != null && !input.equals("")) {
+                    dm.addWord(word, input);
+                    JOptionPane.showMessageDialog(null, "Thêm thành công");
+                } else {
+                    System.out.println("Cancel add");
+                }
+                textField2.setText("");
+            }
 
-    private DictionaryManagement dm = new DictionaryManagement();
-    private ArrayList<Word> words = new ArrayList<Word>();
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Nguyen Vinh
-    private JFrame frame1;
-    private JPanel panel11;
-    private JPanel p1;
-    private JLabel home;
-    private JPanel p2;
-    private JLabel wordTrans;
-    private JPanel p3;
-    private JLabel paraTrans;
-    private JPanel p4;
-    private JLabel modify;
-    private JPanel p5;
-    private JLabel about;
-    private JPanel panel12;
-    private JPanel panel33;
-    private JPanel aboutPane;
-    private JPanel modifyPane;
-    private JPanel panel2;
-    private JTextField textField2;
-    private JPanel panel3;
-    private JLabel label1;
-    private JPanel paraTransPane;
-    private JPanel homePane;
-    private JPanel wordTransPane;
-    private JPanel panel34;
-    private JTextField textField1;
-    private JScrollPane scrollPane1;
-    private JList list1;
-    private JPanel panel1;
-    private JScrollPane scrollPane2;
-    private JTextArea textArea1;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {}
 
-    public MainMenu() {
-        initComponents();
-        defaultPage();
-        frame1.setVisible(true);
-        frame1.setLocationRelativeTo(null);
-        frame1.setResizable(false);
-        frame1.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {}
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                panel3.setBackground(new Color(60, 63, 65));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                panel3.setBackground(background1);
+            }
+
+        });
+
+        label3.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                String word = textField2.getText();
+                if (!word.equals("")) {
+                    Word deleteWord = dm.dictionaryLookup(word);
+                    if (deleteWord.getWord().length() == 0 && deleteWord.getMeaning().length() == 0) {
+                        JOptionPane.showMessageDialog(null, "Không tìm thấy từ muốn xóa !");
+                    } else {
+                        JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa từ \"" + deleteWord.getWord() + "\" ?", "Xóa từ", JOptionPane.YES_NO_OPTION);
+                        dm.deleteWordFromDictionary(word);
+                        JOptionPane.showMessageDialog(null, "Xóa thành công");
+                    }
+                    textField2.setText("");
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {}
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {}
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                panel4.setBackground(new Color(60, 63, 65));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                panel4.setBackground(background1);
+
+            }
+        });
+
+        label4.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                String word = textField2.getText();
+                if (!word.equals("")) {
+                    String[] options = {"Chỉnh sửa từ", "Chỉnh sửa nghĩa"};
+                    JPanel panel = new JPanel();
+                    JLabel label = new JLabel("Nhập từ/nghĩa cần sửa: ");
+                    JTextField textField = new JTextField();
+                    textField.setPreferredSize(new Dimension(230, 45));
+                    panel.add(label);
+                    panel.add(textField);
+                    int option = JOptionPane.showOptionDialog(null, panel, "Chỉnh sửa", JOptionPane.NO_OPTION, JOptionPane.DEFAULT_OPTION, null, options, null);
+                    String input = textField.getText();
+                    System.out.println(option + input);
+                    if (!input.equals("") && option == 0) {
+                        if (dm.modifyWord(word, input)) {
+                            JOptionPane.showMessageDialog(null, "Chỉnh sửa thành công");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Không tìm thấy từ muốn chỉnh sửa !");
+                        }
+                    }
+
+                    if (!input.equals("") && option == 1) {
+                        if (dm.modifyMeaning(word, input)) {
+                            JOptionPane.showMessageDialog(null, "Chỉnh sửa thành công");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Không tìm thấy từ muốn chỉnh sửa !");
+                        }
+                    }
+                }
+                textField2.setText("");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {}
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {}
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                panel5.setBackground(new Color(60, 63, 65));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) { panel5.setBackground(background1); }
+        });
+        Border border = BorderFactory.createLineBorder(new Color(5, 5, 5));
+        textField1.setBorder(border);
+        scrollPane1.setBorder(border);
+        textArea1.setBackground(background1);
+
         textField1.setText("Nhập từ cần tra");
         textField1.addMouseListener(new MouseListener() {
             @Override
@@ -760,6 +1094,7 @@ public class MainMenu extends JFrame {
             @Override
             public void mouseExited(MouseEvent mouseEvent) {}
         });
+
         textField1.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
@@ -777,16 +1112,15 @@ public class MainMenu extends JFrame {
             }
 
             public void warn(DocumentEvent documentEvent) {
-
                 DefaultListModel word = new DefaultListModel();
                 String input = textField1.getText();
                 words = dm.dictionarySearcher(input);
                 if (words != null) {
-                    for (int i = 0; i < words.size(); i++) {
-                        word.addElement(words.get(i).getWord());
+                    for (Word w : words) {
+                        word.addElement(w.getWord());
                     }
+                    list1.setModel(word);
                 }
-                list1.setModel(word);
                 if (words == null) {
                     word.addElement("Không tìm thấy từ");
                     list1.setModel(word);
@@ -794,7 +1128,6 @@ public class MainMenu extends JFrame {
                 }
             }
         });
-
 
         list1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -812,17 +1145,130 @@ public class MainMenu extends JFrame {
                 }
             }
         });
+
+        label5.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) { panel6.setBackground(new Color(60, 63, 65)); }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) { panel6.setBackground(background1); }
+        });
+
+        label7.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                String paragraph = textArea2.getText();
+                API api = new API(paragraph);
+                String response;
+                try {
+                    response = api.Post();
+                    textArea3.setText(API.prettify(response));
+                } catch (IOException e) {
+                    response = e.toString();
+                    textArea3.setText(response);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) { panel8.setBackground(new Color(60, 63, 65)); }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) { panel8.setBackground(background1); }
+        });
     }
 
-    private static void runApplication() throws IndexOutOfBoundsException{
+    private void defaultPage() {
+        DefaultListModel word = new DefaultListModel();
+        words = dm.dictionarySearcher("");
+        for (int i = 0; i < words.size(); i++) {
+            word.addElement(words.get(i).getWord());
+        }
+        list1.setModel(word);
+    }
+
+    private Color background1 = new Color(69, 73, 74);
+    private DictionaryManagement dm;
+    private ArrayList<Word> words = new ArrayList<Word>();
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Nguyen Vinh
+    private JFrame frame1;
+    private JPanel panel11;
+    private JPanel p1;
+    private JLabel home;
+    private JPanel p2;
+    private JLabel wordTrans;
+    private JPanel p3;
+    private JLabel paraTrans;
+    private JPanel p4;
+    private JLabel modify;
+    private JPanel p5;
+    private JLabel about;
+    private JPanel panel12;
+    private JPanel panel6;
+    private JLabel label5;
+    private JPanel panel33;
+    private JPanel aboutPane;
+    private JTextArea textArea4;
+    private JPanel modifyPane;
+    private JPanel panel2;
+    private JLabel label1;
+    private JTextField textField2;
+    private JPanel panel3;
+    private JLabel label2;
+    private JPanel panel4;
+    private JLabel label3;
+    private JPanel panel5;
+    private JLabel label4;
+    private JPanel homePane;
+    private JPanel panel9;
+    private JLabel label10;
+    private JLabel label8;
+    private JPanel wordTransPane;
+    private JPanel panel34;
+    private JTextField textField1;
+    private JScrollPane scrollPane1;
+    private JList list1;
+    private JPanel panel1;
+    private JScrollPane scrollPane2;
+    private JTextArea textArea1;
+    private JPanel paraTransPane;
+    private JPanel panel7;
+    private JScrollPane scrollPane3;
+    private JTextArea textArea2;
+    private JScrollPane scrollPane4;
+    private JTextArea textArea3;
+    private JLabel label6;
+    private JPanel panel8;
+    private JLabel label7;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public void runApplication() throws IndexOutOfBoundsException{
         FlatDarkFlatIJTheme.install();
         try {
             UIManager.setLookAndFeel(String.valueOf(new FlatDarkFlatIJTheme()));
-        } catch( Exception ex ) {}
-        new MainMenu();
-    }
-
-    public static void main(String[] args) {
-        runApplication();
+        } catch( Exception ex ) { }
+        initComponents();
+        defaultPage();
+        frame1.setVisible(true);
+        frame1.setLocationRelativeTo(null);
+        frame1.setResizable(false);
+        panel6.setVisible(false);
+        homePane.show();
+        frame1.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

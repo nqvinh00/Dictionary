@@ -2,7 +2,6 @@ package Dictionary;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,15 +10,19 @@ public class DictionaryManagement {
     private Dictionary dictionary = new Dictionary();
 //    private String source_path = "../../docs/dictionaries.txt";
 
+    public DictionaryManagement() {
+        this.insertFromFile();
+    }
+
     public void insertFromCommandLine() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter number of words: ");
+        System.out.print("Nhập số lượng từ: ");
         int number_of_words = in.nextInt();
         in.nextLine();
         for (int i = 0; i < number_of_words; i++) {
-            System.out.print("Enter english word: ");
+            System.out.print("Nhập từ: ");
             String w = in.nextLine();
-            System.out.print("Enter meaning of entered word: ");
+            System.out.print("Nhập nghĩa: ");
             String d = in.nextLine();
             dictionary.addWord(w, d);
         }
@@ -30,7 +33,7 @@ public class DictionaryManagement {
             File file = new File("docs/dictionaries.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
-                String[] word_with_meaning = scanner.nextLine().split("\t");
+                String[] word_with_meaning = scanner.nextLine().split("\t", 2);
                 dictionary.addWord(word_with_meaning[0], word_with_meaning[1]);
             }
         } catch (FileNotFoundException e) {
@@ -49,49 +52,49 @@ public class DictionaryManagement {
     }
 
     public void deleteWordFromDictionary() {
-        System.out.print("Enter word to delete: ");
+        System.out.print("Nhập từ để xóa: ");
         Scanner in = new Scanner(System.in);
         String word = in.nextLine();
         dictionary.deleteWord(word);
     }
 
-    public String dictionaryLookup() {
+    public void dictionaryLookup() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter word to search: ");
+        System.out.print("Nhập từ để tra: ");
         String w = in.nextLine();
         Word find_word = dictionary.findWord(w);
         String output;
         if (find_word == null) {
-            output = "Word not found";
+            output = "Không tìm thấy từ";
         } else {
-            output = "Word: " + find_word.getWord() + "\nMeaning: " + find_word.getMeaning() + "\n";
+            output = "Từ: " + find_word.getWord() + "\nNghĩa: " + find_word.getMeaning() + "\n";
         }
-        return output;
+        System.out.println(output);
     }
 
     public void modifyWord() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter word to modify meaning: ");
-        String w = in.nextLine();
-        dictionary.modifyMeaning(w);
-    }
-
-    public void modifyMeaning() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter word to modify: ");
+        System.out.print("Nhập từ cần sửa: ");
         String w = in.nextLine();
         dictionary.modifyWord(w);
     }
 
+    public void modifyMeaning() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Nhập từ cần sửa nghĩa: ");
+        String w = in.nextLine();
+        dictionary.modifyMeaning(w);
+    }
+
     public void dictionarySearcher() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter some charaters to search: ");
+        System.out.print("Nhập kí tự để tìm kiếm: ");
         String w = in.nextLine();
         String output = dictionary.searchWord(w);
         if (output.equals("")) {
-            System.out.println("No results found");
+            System.out.println("Không tìm thấy kết quả");
         } else {
-            System.out.println("Word start with " + w + " :");
+            System.out.println("Từ bắt đầu với " + w + " :");
             System.out.println(output);
         }
     }

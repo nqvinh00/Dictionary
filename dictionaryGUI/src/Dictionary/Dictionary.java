@@ -25,28 +25,34 @@ public class Dictionary {
     }
 
     public Word findWord(String w) {
-        int left = 0, right = words.size();
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            int res = w.compareTo(words.get(mid).getWord());
-            if (res == 0) {
-                return words.get(mid);
-            } else if (res > 0) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
+        int index = findIndex(w);
+        if (index != -1) {
+            return words.get(index);
+        } else {
+            return new Word();
         }
-        return null;
+//        int left = 0, right = words.size();
+//        System.out.println(right);
+//        while (left <= right) {
+//            int mid = left + (right - left) / 2;
+//            int res = w.compareTo(words.get(mid).getWord());
+//            if (res == 0) {
+//                return words.get(mid);
+//            } else if (res > 0) {
+//                left = mid + 1;
+//            } else {
+//                right = mid - 1;
+//            }
+//        }
+//        return new Word();
     }
 
     public ArrayList searchWord(String w) {
         if (w != "") {
             ArrayList<Word> output = new ArrayList<Word>();
-            for (int i = 0; i < words.size(); i++)
-            {
-                if (words.get(i).getWord().startsWith(w)) {
-                    output.add(words.get(i));
+            for (Word word : words) {
+                if (word.getWord().startsWith(w)) {
+                    output.add(word);
                 }
             }
             return output;
@@ -57,9 +63,9 @@ public class Dictionary {
 
     public int findIndex(String w) {
         int index = -1;
-        for (int i = 0; i < words.size(); i++) {
-            if (words.get(i).getWord().equals((w))) {
-                index = i;
+        for (Word word : words) {
+            if (word.getWord().equals((w))) {
+                index = words.indexOf(word);
             }
         }
         return index;
@@ -74,24 +80,25 @@ public class Dictionary {
         }
     }
 
-    public void modifyWord(String w) {
-        int index = findIndex(w);
+    public boolean modifyWord(String word, String replace) {
+        int index = findIndex(word);
         if (index != -1) {
-            words.set(index ,new Word(w, words.get(index).getMeaning()));
+            words.set(index ,new Word(replace, words.get(index).getMeaning()));
+            return true;
         } else {
             System.out.println("Word not found");
+            return false;
         }
     }
 
-    public void modifyMeaning(String w) {
+    public boolean modifyMeaning(String w, String meaning) {
         int index = findIndex(w);
         if (index != -1) {
-            Scanner in = new Scanner(System.in);
-            System.out.print("Enter meaning to modify: ");
-            String newMean = in.nextLine();
-            words.set(index ,new Word(words.get(index).getWord(), newMean));
+            words.set(index ,new Word(words.get(index).getWord(), meaning));
+            return true;
         } else {
             System.out.println("Word not found");
+            return false;
         }
     }
 

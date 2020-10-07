@@ -10,10 +10,13 @@ import java.io.FileNotFoundException;
 
 public class DictionaryManagement {
     private Dictionary dictionary = new Dictionary();
-//    private String source_path = "../../docs/dictionaries.txt";
 
     public DictionaryManagement() {
         insertFromFile();
+    }
+
+    public DictionaryManagement(Database db) {
+
     }
 
     public void insertFromCommandLine() {
@@ -30,6 +33,10 @@ public class DictionaryManagement {
         }
     }
 
+    public int getSize() {
+        return dictionary.getCurrentSize();
+    }
+
     public void insertFromFile() {
         try {
             File file = new File("docs/dictionaries.txt");
@@ -43,6 +50,10 @@ public class DictionaryManagement {
         }
     }
 
+    public void addWord(String word, String meaning) {
+        dictionary.addWord(word, meaning);
+    }
+
     public void exportToFile() {
         try {
             FileWriter writer = new FileWriter("/home/vinh/Documents/Dictionary/docs/dictionaries1.txt");
@@ -52,39 +63,22 @@ public class DictionaryManagement {
         }
     }
 
-    public void deleteWordFromDictionary() {
-        System.out.print("Enter word to delete: ");
-        Scanner in = new Scanner(System.in);
-        String word = in.nextLine();
+    public void deleteWordFromDictionary(String word) {
         dictionary.deleteWord(word);
     }
 
-    public String dictionaryLookup() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter word to search: ");
-        String w = in.nextLine();
-        Word find_word = dictionary.findWord(w);
-        String output;
-        if (find_word == null) {
-            output = "Word not found";
-        } else {
-            output = "Word: " + find_word.getWord() + "\nMeaning: " + find_word.getMeaning() + "\n";
-        }
-        return output;
+    public Word dictionaryLookup(String word) {
+        return dictionary.findWord(word);
     }
 
-    public void modifyWord() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter word to modify meaning: ");
-        String w = in.nextLine();
-        dictionary.modifyMeaning(w);
+    public boolean modifyWord(String word, String replace) {
+        boolean status = dictionary.modifyWord(word, replace);
+        return status;
     }
 
-    public void modifyMeaning() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter word to modify: ");
-        String w = in.nextLine();
-        dictionary.modifyWord(w);
+    public boolean modifyMeaning(String word, String meaning) {
+        boolean status = dictionary.modifyMeaning(word, meaning);
+        return status;
     }
 
     public ArrayList dictionarySearcher(String w) {

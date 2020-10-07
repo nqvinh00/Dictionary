@@ -1,35 +1,35 @@
 package Dictionary;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Dictionary {
-    private Word[] words = new Word[50000];
-    private int size = 0;
+    private ArrayList<Word> words = new ArrayList<Word>();
 
     public void addWord(String w, String d) {
         Word word = new Word(w, d);
-        words[size] = word;
-        size++;
+        words.add(word);
     }
 
     public void showWords() {
-        System.out.printf("%-20s %-20s %-20s%n", "No", "English", "Vietnamese");
-        for (int i = 0; i < size; i++) {
-            System.out.printf("%-20d %-20s %-20s%n", i + 1, words[i].getWord(), words[i].getMeaning());
+        System.out.printf("%-20s %-20s %-20s%n","No", "English", "Vietnamese");
+        for (int i = 0; i < words.size(); i++)
+        {
+            System.out.printf("%-20d %-20s %-20s%n", i + 1, words.get(i).getWord(), words.get(i).getMeaning());
         }
     }
 
     public int getCurrentSize() {
-        return size;
+        return words.size();
     }
 
     public Word findWord(String w) {
-        int left = 0, right = size;
+        int left = 0, right = words.size();
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            int res = w.compareTo(words[mid].getWord());
+            int res = w.compareTo(words.get(mid).getWord());
             if (res == 0) {
-                return words[mid];
+                return words.get(mid);
             } else if (res > 0) {
                 left = mid + 1;
             } else {
@@ -41,9 +41,9 @@ public class Dictionary {
 
     public String searchWord(String w) {
         String output = "";
-        for (int i = 0; i < size; i++) {
-            if (words[i].getWord().startsWith(w)) {
-                output += words[i].getWord() + "\n";
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).getWord().startsWith(w)) {
+                output += words.get(i).getWord() + "\n";
             }
         }
         return output;
@@ -51,8 +51,8 @@ public class Dictionary {
 
     public int findIndex(String w) {
         int index = -1;
-        for (int i = 0; i < size; i++) {
-            if (words[i].getWord().equals((w))) {
+        for (int i = 0; i < words.size(); i++) {
+            if (words.get(i).getWord().equals((w))) {
                 index = i;
             }
         }
@@ -62,21 +62,18 @@ public class Dictionary {
     public void deleteWord(String w) {
         int index = findIndex(w);
         if (index != -1) {
-            for (int i = index; i < size - 1; i++) {
-                words[i] = words[i + 1];
-            }
-            size--;
+            words.remove(index);
         } else {
-            System.out.println("Word not found");
+            System.out.println("Không tìm thấy từ");
         }
     }
 
     public void modifyWord(String w) {
         int index = findIndex(w);
         if (index != -1) {
-            words[index] = new Word(w, words[index].getMeaning());
+            words.set(index ,new Word(w, words.get(index).getMeaning()));
         } else {
-            System.out.println("Word not found");
+            System.out.println("Không tìm thấy từ");
         }
     }
 
@@ -84,18 +81,19 @@ public class Dictionary {
         int index = findIndex(w);
         if (index != -1) {
             Scanner in = new Scanner(System.in);
-            System.out.print("Enter meaning to modify: ");
+            System.out.print("Nhập nghĩa để điều chỉnh: ");
             String newMean = in.nextLine();
-            words[index] = new Word(words[index].getWord(), newMean);
+            words.set(index ,new Word(words.get(index).getWord(), newMean));
         } else {
-            System.out.println("Word not found");
+            System.out.println("Không tìm thấy từ");
         }
     }
 
     public String outputToExport() {
         String output = "";
-        for (int i = 0; i < size; i++) {
-            output += words[i].getWord() + "\t" + words[i].getMeaning();
+        for (int i = 0; i < words.size(); i++)
+        {
+            output += words.get(i).getWord() + "\t" + words.get(i).getMeaning() + "\n";
         }
         return output;
     }
