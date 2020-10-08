@@ -81,12 +81,13 @@ public class MainMenu extends JFrame {
             //======== panel11 ========
             {
                 panel11.setBackground(new Color(69, 73, 74));
-                panel11.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-                ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-                .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-                . Color .red ) ,panel11. getBorder () ) ); panel11. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-                propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-                ;} } );
+                panel11.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+                . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing
+                .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+                Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+                ) ,panel11. getBorder () ) ); panel11. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+                public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName (
+                ) ) )throw new RuntimeException( ) ;} } );
 
                 //======== p1 ========
                 {
@@ -785,7 +786,7 @@ public class MainMenu extends JFrame {
                         .addComponent(panel11, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addGroup(frame1ContentPaneLayout.createParallelGroup()
-                            .addComponent(panel33, GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
+                            .addComponent(panel33, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panel12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
             frame1ContentPaneLayout.setVerticalGroup(
@@ -1073,8 +1074,8 @@ public class MainMenu extends JFrame {
         textField1.setBorder(border);
         scrollPane1.setBorder(border);
         textArea1.setBackground(background1);
-
         textField1.setText("Nhập từ cần tra");
+
         textField1.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -1240,6 +1241,7 @@ public class MainMenu extends JFrame {
         list1.setModel(word);
     }
 
+    private Database db = new Database();
     private TextToSpeech tts = new TextToSpeech();
     private Color background1 = new Color(69, 73, 74);
     private DictionaryManagement dm;
