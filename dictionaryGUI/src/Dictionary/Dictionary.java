@@ -4,14 +4,25 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * @author Nguyen Vinh
+ */
 public class Dictionary {
     private ArrayList<Word> words = new ArrayList<Word>();
 
-    public void addWord(String w, String d) {
-        Word word = new Word(w, d);
+    /**
+     * add new Word with arraylist add method.
+     * @param w word
+     * @param m meaning
+     */
+    public void addWord(String w, String m) {
+        Word word = new Word(w, m);
         words.add(word);
     }
 
+    /**
+     * display word and meaning.
+     */
     public void showWords() {
         System.out.printf("%-20s %-20s %-20s%n","No", "English", "Vietnamese");
         for (int i = 0; i < words.size(); i++)
@@ -20,10 +31,19 @@ public class Dictionary {
         }
     }
 
+    /**
+     * get size of words array list.
+     * @return words size
+     */
     public int getCurrentSize() {
         return words.size();
     }
 
+    /**
+     * find word in words arraylist.
+     * @param w word
+     * @return word needed
+     */
     public Word findWord(String w) {
         int index = findIndex(w);
         if (index != -1) {
@@ -47,6 +67,11 @@ public class Dictionary {
 //        return new Word();
     }
 
+    /**
+     * search for word start with <w>.
+     * @param w string to search word
+     * @return list of word startsWith(w)
+     */
     public ArrayList searchWord(String w) {
         if (w != "") {
             ArrayList<Word> output = new ArrayList<Word>();
@@ -61,6 +86,11 @@ public class Dictionary {
         }
     }
 
+    /**
+     * get index of word.
+     * @param w word
+     * @return index
+     */
     public int findIndex(String w) {
         int index = -1;
         for (Word word : words) {
@@ -71,6 +101,10 @@ public class Dictionary {
         return index;
     }
 
+    /**
+     * delete word.
+     * @param w word
+     */
     public void deleteWord(String w) {
         int index = findIndex(w);
         if (index != -1) {
@@ -80,6 +114,12 @@ public class Dictionary {
         }
     }
 
+    /**
+     * modify word.
+     * @param word word need to modify
+     * @param replace replace word
+     * @return true if success
+     */
     public boolean modifyWord(String word, String replace) {
         int index = findIndex(word);
         if (index != -1) {
@@ -91,6 +131,12 @@ public class Dictionary {
         }
     }
 
+    /**
+     * modify meaning of word.
+     * @param w word neead to modify
+     * @param meaning replaced meaning
+     * @return true if success
+     */
     public boolean modifyMeaning(String w, String meaning) {
         int index = findIndex(w);
         if (index != -1) {
@@ -102,6 +148,10 @@ public class Dictionary {
         }
     }
 
+    /**
+     * create output to export to file.
+     * @return output
+     */
     public String outputToExport() {
         String output = "";
         for (int i = 0; i < words.size(); i++)

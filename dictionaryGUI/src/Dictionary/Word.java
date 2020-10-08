@@ -1,37 +1,68 @@
 package Dictionary;
 
+/**
+ * @author Nguyen Vinh
+ */
 public class Word {
-    private String word_target;
-    private String word_explain;
+    private String word;
+    private String meaning;
 
+    /**
+     * default constructor.
+     */
     public Word() {
-        word_explain = "";
-        word_target = "";
-
+        meaning = "";
+        word = "";
     }
 
-    public Word(String w, String d) {
-        word_target = w;
-        word_explain = d;
+    /**
+     * constructor with params.
+     * @param w word
+     * @param m meaning
+     */
+    public Word(String w, String m) {
+        word = w;
+        meaning = m;
     }
 
+    /**
+     * constructor copy.
+     * @param w
+     */
     public Word(Word w) {
-        word_target = w.word_target;
-        word_explain = w.word_explain;
+        word = w.word;
+        meaning = w.word;
     }
 
+    /**
+     * word setter.
+     * @param word word
+     */
     public void setWord(String word) {
-        this.word_target = word;
+        this.word = word;
     }
 
+    /**
+     * meaning setter.
+     * @param meaning
+     */
     public void setMeaning(String meaning) {
-        this.word_explain = meaning;
+        this.meaning = meaning;
     }
 
+    /**
+     * word getter.
+     * @return word
+     */
     public String getWord() {
-        return word_target;
+        return word;
     }
+
+    /**
+     * meaning getter.
+     * @return meaning
+     */
     public String getMeaning() {
-        return word_explain;
+        return meaning;
     }
 }

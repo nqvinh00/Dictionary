@@ -5,17 +5,16 @@
 package Dictionary;
 
 import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 
 /**
  * @author Nguyen Vinh
@@ -82,12 +81,12 @@ public class MainMenu extends JFrame {
             //======== panel11 ========
             {
                 panel11.setBackground(new Color(69, 73, 74));
-                panel11.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-                border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-                , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-                .BOLD ,12 ), java. awt. Color. red) ,panel11. getBorder( )) ); panel11. addPropertyChangeListener (
-                new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-                .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+                panel11.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+                ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+                . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+                . Color. red) ,panel11. getBorder( )) ); panel11. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+                propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+                ; }} );
 
                 //======== p1 ========
                 {
@@ -1135,6 +1134,7 @@ public class MainMenu extends JFrame {
                 int index = list1.locationToIndex(e.getPoint());
                 if (words != null) {
                     String meaning = words.get(index).getMeaning();
+                    textField1.setText(words.get(index).getWord());
                     String[] word_with_meaning = meaning.split("\t");
                     String output = word_with_meaning[0] + "\n";
                     for (int i = 1; i < word_with_meaning.length; i++) {
@@ -1190,8 +1190,47 @@ public class MainMenu extends JFrame {
             @Override
             public void mouseExited(MouseEvent mouseEvent) { panel8.setBackground(background1); }
         });
+
+        label5.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                if (wordTransPane.isVisible()) {
+                    try {
+                        tts.playSound(textField1.getText());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (paraTransPane.isVisible()) {
+                    try {
+                        tts.playSound(textArea2.getText());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) { }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) { }
+        });
     }
 
+    /**
+     * create default list for word translation panel.
+     */
     private void defaultPage() {
         DefaultListModel word = new DefaultListModel();
         words = dm.dictionarySearcher("");
@@ -1201,6 +1240,7 @@ public class MainMenu extends JFrame {
         list1.setModel(word);
     }
 
+    private TextToSpeech tts = new TextToSpeech();
     private Color background1 = new Color(69, 73, 74);
     private DictionaryManagement dm;
     private ArrayList<Word> words = new ArrayList<Word>();
@@ -1257,6 +1297,10 @@ public class MainMenu extends JFrame {
     private JLabel label7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
+    /**
+     * call some method and run application.
+     * @throws IndexOutOfBoundsException
+     */
     public void runApplication() throws IndexOutOfBoundsException{
         FlatDarkFlatIJTheme.install();
         try {
