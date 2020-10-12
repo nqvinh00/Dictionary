@@ -10,6 +10,9 @@ import com.google.gson.*;
 import com.squareup.okhttp.*;
 import netscape.javascript.JSObject;
 
+/**
+ * @author Nguyen Vinh
+ */
 public class API {
     private static String subscriptionKey = "77c1fb27ceae4a138b7ee476e790f74f";
     private static String endpoint = "https://api.cognitive.microsofttranslator.com/";
@@ -19,6 +22,11 @@ public class API {
 
     OkHttpClient client = new OkHttpClient();
 
+    /**
+     * Post method, create request.
+     * @return response body
+     * @throws IOException if error
+     */
     public String Post() throws IOException {
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, content);
@@ -32,6 +40,12 @@ public class API {
     }
 
     // This function prettifies the json response.
+
+    /**
+     * prettifies the json response.
+     * @param json_text from Post()
+     * @return meaning of word
+     */
     public static String prettify(String json_text) {
         JsonParser parser = new JsonParser();
 
@@ -40,6 +54,10 @@ public class API {
        return json_text.substring(76, json_text.indexOf("to") - 3);
     }
 
+    /**
+     * constructor.
+     * @param translateTarget word need to transalte
+     */
     public API(String translateTarget) {
         this.translateTarget = translateTarget;
         this.content = "[{\"Text\": \"" + translateTarget + "\"}]";

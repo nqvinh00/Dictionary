@@ -8,17 +8,31 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * @author Nguyen Vinh
+ */
 public class DictionaryManagement {
     private Dictionary dictionary = new Dictionary();
 
+    /**
+     * constructor call insertFromFile.
+     */
     public DictionaryManagement() {
         insertFromFile();
     }
 
+    /**
+     * constructor use database
+     * @param db sqlite database
+     */
     public DictionaryManagement(Database db) {
 
     }
 
+    /**
+     * insert word from commandline.
+     * not use in version
+     */
     public void insertFromCommandLine() {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter number of words: ");
@@ -33,10 +47,17 @@ public class DictionaryManagement {
         }
     }
 
+    /**
+     * size of dictionary getter.
+     * @return dictionary size
+     */
     public int getSize() {
         return dictionary.getCurrentSize();
     }
 
+    /**
+     * insert words list from file.
+     */
     public void insertFromFile() {
         try {
             File file = new File("docs/dictionaries.txt");
@@ -50,10 +71,18 @@ public class DictionaryManagement {
         }
     }
 
+    /**
+     * call addWord method of Dictionary object.
+     * @param word Word.word
+     * @param meaning Word.meaning
+     */
     public void addWord(String word, String meaning) {
         dictionary.addWord(word, meaning);
     }
 
+    /**
+     * export dictionary after modify to file, useless with database ver.
+     */
     public void exportToFile() {
         try {
             FileWriter writer = new FileWriter("/home/vinh/Documents/Dictionary/docs/dictionaries1.txt");
@@ -63,24 +92,50 @@ public class DictionaryManagement {
         }
     }
 
+    /**
+     * call deleteWord method of Dictionary object.
+     * @param word Word.word to delete
+     */
     public void deleteWordFromDictionary(String word) {
         dictionary.deleteWord(word);
     }
 
+    /**
+     * call findWord method of Dictionary object.
+     * @param word to find
+     * @return word object needed
+     */
     public Word dictionaryLookup(String word) {
         return dictionary.findWord(word);
     }
 
+    /**
+     * call modifyWord method of Dictionary object.
+     * @param word need to modify
+     * @param replace word to replace
+     * @return true if success
+     */
     public boolean modifyWord(String word, String replace) {
         boolean status = dictionary.modifyWord(word, replace);
         return status;
     }
 
+    /**
+     * call modifyMeaning method of Dictionary object.
+     * @param word need to modify
+     * @param meaning meaning to replace
+     * @return true if success
+     */
     public boolean modifyMeaning(String word, String meaning) {
         boolean status = dictionary.modifyMeaning(word, meaning);
         return status;
     }
 
+    /**
+     * call searchWord method of Dictionary object.
+     * @param w string to search word
+     * @return list of similar word
+     */
     public ArrayList dictionarySearcher(String w) {
         ArrayList<Word> output = dictionary.searchWord(w);
         if (output.size() == 0) {
@@ -91,6 +146,9 @@ public class DictionaryManagement {
         }
     }
 
+    /**
+     * show all words, not use in this ver.
+     */
     public void showDictionary() {
         dictionary.showWords();
     }

@@ -1,18 +1,17 @@
 package Dictionary;
 
-import javax.swing.plaf.nimbus.State;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
-
+/**
+ * @author Nguyen Vinh
+ */
 public class Database {
-    public Database() {
-    }
 
+    /**
+     * connect with database.
+     * @return conn
+     */
     private static Connection connect() {
         Connection conn = null;
         try {
@@ -25,6 +24,35 @@ public class Database {
         return conn;
     }
 
+    /**
+     * add word to database.
+     * @param word word
+     * @param meaning of word
+     * @return true if success
+     * @throws SQLException if query error
+     */
+    public boolean addWord(String word, String meaning) throws SQLException {
+        if (findWord(word) != null) {
+            return false;
+        }
+        String query = "INSERT INTO test1(word, meaning) VALUES (?, ?)";
+        Connection conn = this.connect();
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setString(1, word);
+        stmt.setString(2, meaning);
+        stmt.executeUpdate();
+        stmt.close();
+        conn.commit();
+        conn.close();
+        return true;
+    }
+
+    /**
+     * find word start with string <word>.
+     * @param word to find
+     * @return arrayList of word
+     * @throws SQLException if query error
+     */
     public ArrayList wordLookup(String word) throws SQLException{
         ArrayList<Word> output = new ArrayList<Word>();
         String query;
@@ -34,7 +62,6 @@ public class Database {
         } else {
             query = "SELECT * FROM test1";
         }
-        long start = System.currentTimeMillis();
         Connection conn = this.connect();
         Statement stmt = conn.createStatement(java.sql.ResultSet.TYPE_FORWARD_ONLY,
                 java.sql.ResultSet.CONCUR_READ_ONLY);
@@ -50,12 +77,16 @@ public class Database {
             stmt.close();
             rs.close();
             conn.close();
-            long end = System.currentTimeMillis();
-            System.out.println(end - start);
             return output;
         }
     }
 
+    /**
+     * find word.
+     * @param w word to find
+     * @return matched Word
+     * @throws SQLException if query error
+     */
     public Word findWord(String w) throws SQLException {
         String query = "SELECT * FROM test1 WHERE word = " + "\"" + w + "\"";
         Connection conn = this.connect();
@@ -75,9 +106,14 @@ public class Database {
         return new Word(word, meaning);
     }
 
-    public boolean deleteWord(String w) throws SQLException {
+    /**
+     * delete word from database
+     * @param w word to delete
+     * @throws SQLException if error
+     */
+    public void deleteWord(String w) throws SQLException {
         if (findWord(w) == null) {
-            return false;
+            return;
         }
         String query = "DELETE FROM test1 WHERE word = " + "\"" + w + "\"";
         Connection conn = this.connect();
@@ -87,9 +123,15 @@ public class Database {
         conn.commit();
         stmt.close();
         conn.close();
-        return true;
     }
 
+    /**
+     * modify word.
+     * @param w word need to modify
+     * @param newWord word to replace
+     * @return true if success
+     * @throws SQLException if query error
+     */
     public boolean modifyWord(String w, String newWord) throws SQLException {
         if (findWord(w) == null) {
             return false;
@@ -105,6 +147,13 @@ public class Database {
         return true;
     }
 
+    /**
+     * modify meaning.
+     * @param w word need to modify
+     * @param meaning to replace
+     * @return true if success
+     * @throws SQLException if query error
+     */
     public boolean modifyMeaning(String w, String meaning) throws SQLException {
         if (findWord(w) == null) {
             return false;
@@ -119,9 +168,8 @@ public class Database {
         conn.close();
         return true;
     }
-
 //    public static void main(String[] args) throws SQLException {
 //        Database a = new Database();
-//        System.out.println(a.modifyMeaning("test1", "test5"));
+//        System.out.println(a.addWord("test1", "test5"));
 //    }
 }

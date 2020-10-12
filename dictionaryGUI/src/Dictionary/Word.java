@@ -44,7 +44,7 @@ public class Word {
 
     /**
      * meaning setter.
-     * @param meaning
+     * @param meaning of word
      */
     public void setMeaning(String meaning) {
         this.meaning = meaning;
