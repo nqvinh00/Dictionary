@@ -12,10 +12,10 @@ public class Database {
      * connect with database.
      * @return conn
      */
-    private static Connection connect() {
+    private Connection connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:sqlite:test.db";
+            String url = "jdbc:sqlite::resource:test.db";
             conn = DriverManager.getConnection(url);
             conn.setAutoCommit(false);
         } catch (SQLException e) {

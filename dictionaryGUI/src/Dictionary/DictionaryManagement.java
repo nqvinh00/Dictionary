@@ -1,12 +1,9 @@
 package Dictionary;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * @author Nguyen Vinh
@@ -19,14 +16,6 @@ public class DictionaryManagement {
      */
     public DictionaryManagement() {
         insertFromFile();
-    }
-
-    /**
-     * constructor use database
-     * @param db sqlite database
-     */
-    public DictionaryManagement(Database db) {
-
     }
 
     /**
@@ -60,7 +49,9 @@ public class DictionaryManagement {
      */
     public void insertFromFile() {
         try {
-            File file = new File("docs/dictionaries.txt");
+//            File file = new File("docs/dictionaries.txt");
+            File file = new File(String.valueOf(ClassLoader.getSystemResource("dictionaries.txt").getFile()));
+//            File file = new File(getClass().getClassLoader().getResource("dictionaries.txt").getFile());
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String[] word_with_meaning = scanner.nextLine().split("\t", 2);
@@ -85,7 +76,9 @@ public class DictionaryManagement {
      */
     public void exportToFile() {
         try {
-            FileWriter writer = new FileWriter("/home/vinh/Documents/Dictionary/docs/dictionaries1.txt");
+            File file = new File(String.valueOf(ClassLoader.getSystemResource("dictionaries.txt").getFile()));
+            FileOutputStream outputFile = new FileOutputStream(file, false);
+            OutputStreamWriter writer = new OutputStreamWriter(outputFile);
             writer.write(dictionary.outputToExport());
         } catch (IOException e) {
             e.printStackTrace();

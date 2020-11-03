@@ -105,6 +105,17 @@ new FormModel {
 					"width": 64
 					"height": 64
 				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label9"
+					"text": "Từ điển Anh - Việt"
+					"foreground": new java.awt.Color( 187, 211, 248, 255 )
+					"font": new java.awt.Font( "Inconsolata", 1, 26 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 65
+					"width": 370
+					"height": 70
+				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
 				name: "panel33"
